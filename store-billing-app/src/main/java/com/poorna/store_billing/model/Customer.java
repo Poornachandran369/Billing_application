@@ -9,6 +9,8 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.UUID;
+
 
 @Entity
 public class Customer {
@@ -18,8 +20,7 @@ public class Customer {
     private Long id;
 
     @NotNull
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    private String customerId = UUID.randomUUID().toString().replace("-", "");
 
     private String name;
 
@@ -27,10 +28,8 @@ public class Customer {
     @Max(value = 110, message = "Age is invalid")
     private Long age;
 
-    @Email
-    private String email;
-
     private String mobileNumber;
     private String Address;
 
+    public Customer(){}
 }
