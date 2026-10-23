@@ -2,11 +2,12 @@ package com.poorna.store_billing.model;
 
 import jakarta.persistence.*;
 import jdk.jfr.Timestamp;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -18,13 +19,16 @@ public class Order {
 
     private Long productId;
 
-    private String productName;
-
     @ManyToOne
     @JoinColumn(name = "customerId")
     private Customer customer;
 
+    @OneToOne
+    @JoinTable(name = "orderItemId")
+    private OrderItem orderItem;
+
     private BigDecimal totalAmount;
+
 
     public BigDecimal getTotalAmount() {
         return totalAmount;
@@ -66,16 +70,6 @@ public class Order {
         this.productId = productId;
     }
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
 
     public Order(){}
-
-
 }

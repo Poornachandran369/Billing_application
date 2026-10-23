@@ -1,9 +1,9 @@
 package com.poorna.store_billing.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class User {
@@ -13,11 +13,18 @@ public class User {
 
     @Min(value = 3, message = "User name is too short." )
     @Max(value = 50, message = "User name is too long")
+
+    @NotBlank
+    @Column(unique = true, nullable = false)
     String name;
 
-    String role;
+    private String mobileNumber;
 
-    String password;
+    private String email;
+
+    @OneToOne
+    @JoinTable(name = "userId")
+    private Account account;
 
     public Long getId() {
         return Id;
@@ -35,20 +42,20 @@ public class User {
         this.name = name;
     }
 
-    public String getRole() {
-        return role;
+    public String getMobileNumber() {
+        return mobileNumber;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public User(){}

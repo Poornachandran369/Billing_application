@@ -1,0 +1,21 @@
+package com.poorna.store_billing.service;
+
+import com.poorna.store_billing.model.Customer;
+import com.poorna.store_billing.repository.CustomerRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CustomerService {
+
+    private final CustomerRepository customerRepository;
+
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
+    public Customer addCustomer(Customer customer) {
+        return customerRepository.save(customer);
+    }
+
+
+}

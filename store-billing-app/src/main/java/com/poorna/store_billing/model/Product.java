@@ -5,9 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
-
 import java.math.BigDecimal;
-import java.util.UUID;
+
 
 @Entity
 public class Product {
@@ -22,4 +21,5 @@ public class Product {
 
     private BigDecimal unitPrice;
 
+    public Product (){}
 }
