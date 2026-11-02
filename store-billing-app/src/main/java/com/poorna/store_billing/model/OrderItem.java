@@ -10,17 +10,17 @@ import java.util.List;
 public class OrderItem {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long orderItemId;
+    private Long Id;
 
     @OneToMany
     private List<Product> product;
 
     public Long getOrderItemId() {
-        return orderItemId;
+        return Id;
     }
 
     public void setOrderItemId(Long orderItemId) {
-        this.orderItemId = orderItemId;
+        this.Id = orderItemId;
     }
 
     public OrderItem (){}
